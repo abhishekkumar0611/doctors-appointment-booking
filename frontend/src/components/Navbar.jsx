@@ -46,11 +46,23 @@ const Navbar = () => {
                 
             }
             <img onClick={() =>setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
-            
+            <div className={` ${showMenu ? ' fixed w-full': 'w-0 h-0'} md-hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
+                <div>
+                    <img className='w-36'  src={assets.logo} />
+                    <img className='w-7' onClick={() => setShowMenu(false)} src={assets.cross_icon} />
+                </div>
+                <ul className='flex flex-col items-center justify-between gap-2 mt-5 px-5  text-lg font-medium'>
+                    <NavLink className='px-4 py-2 rounded full inline-block ' onClick={() => setShowMenu(false)} to='/'><p >HOME</p></NavLink>
+                    <NavLink className='px-4 py-2 rounded full inline-block ' onClick={() => setShowMenu(false)} to="doctors"><p >ALL DOCTORS</p></NavLink>
+                    <NavLink className='px-4 py-2 rounded full inline-block ' onClick={() => setShowMenu(false)} to="about"><p>ABOUT</p></NavLink>
+                    <NavLink className='px-4 py-2 rounded full inline-block ' onClick={() => setShowMenu(false)} to="/contact"><p>CONTACT</p></NavLink>
+                </ul>
+            </div>
         </div>
       
     </div>
   )
 }
 
-export default Navbar
+export default Navbar;
+
