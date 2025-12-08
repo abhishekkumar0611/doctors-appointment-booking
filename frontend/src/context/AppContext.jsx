@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { doctors } from "../assets/assets";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -13,7 +12,9 @@ const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
 
     const [doctors, setDoctors ] = useState([])
-    const [token, setToken ] = useState('')
+    const [token, setToken ] = useState(localStorage.getItem('token') ? localStorage.getItem('token'): false)
+    const [ userData, setUserData ] = useState(false)
+
 
     const getDoctorsData = async() => {
         try {
@@ -31,17 +32,40 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const loadUserProfileData = async(req, res) => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/user/grt-profile', {headers: {token}})
+            if (data.success) {
+                setUserData(data.userData)
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            
+        }
+    }
+
 
     const value = {
-        doctors,
+        doctors,getDoctorsData,
         currencySymbol,
         token, setToken,
-        backendUrl
+        backendUrl,
+        userData, setUserData,
+        loadUserProfileData
     }
 
     useEffect(() => {
         getDoctorsData()
     }, [])
+
+    useEffect(() => {
+        if(token) {
+            loadUserProfileData()
+        } else {
+            setUserData(false)
+        }
+    }, [token])
 
     return (
         <AppContext.Provider value={value}>
