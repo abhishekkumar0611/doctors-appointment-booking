@@ -29,8 +29,6 @@ const doctorList = async(req, res) => {
 }
 
 
-<<<<<<< HEAD
+
 export { changeAvailablity, doctorList}
-=======
-export { changeAvailablity, doctorList}
->>>>>>> 6a576abdee5462a810efa8e598b45ba5b3df7102
+
