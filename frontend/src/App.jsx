@@ -10,8 +10,11 @@ import MyAppointments from './pages/MyAppointments'
 import Appointment from './pages/Appointment'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+<<<<<<< HEAD
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+=======
+>>>>>>> 6a576abdee5462a810efa8e598b45ba5b3df7102
 
 
 const App = () => {
@@ -31,6 +34,7 @@ const App = () => {
          <Route path ='/appointment' element={<Appointment />} /> 
         <Route path='/appointments/:docId' element={<Appointment />}/>
 </Routes>
+<<<<<<< HEAD
 <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -41,6 +45,8 @@ const App = () => {
         draggable
         theme="light"
       />
+=======
+>>>>>>> 6a576abdee5462a810efa8e598b45ba5b3df7102
 
 <Footer />
       

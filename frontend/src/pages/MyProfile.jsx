@@ -19,7 +19,11 @@ const MyProfile = () => {
 
       formData.append('name', userData.name)
       formData.append('phone', userData.phone)
+<<<<<<< HEAD
       formData.append('address', JSON.stringify(userData.address))
+=======
+      formData.append('adress', JSON.stringify(userData.adress))
+>>>>>>> 6a576abdee5462a810efa8e598b45ba5b3df7102
       formData.append('gender', userData.gender)
       formData.append('dob', userData.dob)
 
@@ -77,6 +81,7 @@ const MyProfile = () => {
             ? <input className='bg-gray-100 max-w-52' type= "text" value={userData.phone} onChange={e => setUserData(prev => ({...prev,phone:e.target.value}) )} />
             : <p className='text-blue-400'>{userData.phone}</p>
           }
+<<<<<<< HEAD
           <p className='font-medium'>Address:</p>
           {
             isEdit
@@ -89,6 +94,20 @@ const MyProfile = () => {
                 {userData.address.line1}
                 <br />
                 {userData.address.line2}
+=======
+          <p className='font-medium'>Adress:</p>
+          {
+            isEdit
+            ? <p>
+              <iput className='bg-gray-50' onChange={(e) => setUserData(prev => ({ ...prev,adress: { ...prev, adress, line1: e.target.value}}))} value={userData.adress.line1} type="text" />
+              <br />
+              <iput className='bg-gray-50' onChange={(e) => setUserData(prev => ({ ...prev,adress: { ...prev, adress, line2: e.target.value}}))} value={userData.adress.line2}type="text" />
+              </p>
+              : <p className='text-gray-500'>
+                {userData.adress.line1}
+                <br />
+                {userData.adress.line2}
+>>>>>>> 6a576abdee5462a810efa8e598b45ba5b3df7102
                </p>
           }
         </div>
